@@ -1,12 +1,16 @@
 extends(src='layout.sgr')
   block(name='content')
-    // [if lt IE 9]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    .cover
-      .control#pause
-      .control#play
-      .control#volume-off
-      .control#volume-up
-      h1 2CL - Club des coursiers Lyonnais
-    .tv
-      .screen.mute#tv
-    #rd
+    #intro
+      // [if lt IE 9]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      .cover
+        .control#pause
+        .control.hidden#play
+        .control#volume-off
+        .control.hidden#volume-on
+        .control#see-more
+        h1 2CL - Club des coursiers Lyonnais
+      .tv
+        .screen.mute#tv
+      #rd
+    #presentation
+      p test test test

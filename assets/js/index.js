@@ -56,33 +56,42 @@ var vid = {
 }
 // Radio (music) video
 var rad = {
-  'videoId': 'OS90-v5bj7M',
+  // 'videoId': 'OS90-v5bj7M',
+  'videoId': '493R05ifNsI',
   'startSeconds': 0
 }
 
 // Hack to use onYouTubePlayerAPIReady with webpack : http://stackoverflow.com/questions/12256382/youtube-iframe-api-not-triggering-onyoutubeiframeapiready
 window.onYouTubePlayerAPIReady = () => {
-  tv = new YT.Player('tv', {events: {'onReady': onTVReady, 'onStateChange': onPlayerStateChange}, playerVars: playerDefaults})
   rd = new YT.Player('rd', {events: {'onReady': onRadReady, 'onStateChange': onPlayerStateChange}, playerVars: playerDefaults})
 }
 
 var onTVReady = () => {
+  vidRescale()
+  $('.control#pause').on('click', () => tv.pauseVideo())
+  $('.control#play').on('click', () => tv.playVideo())
   tv.loadVideoById(vid)
   tv.mute()
 }
 
 var onRadReady = () => {
+  tv = new YT.Player('tv', {events: {'onReady': onTVReady, 'onStateChange': onPlayerStateChange}, playerVars: playerDefaults})
   rd.loadVideoById(rad)
+  $('.control#pause, .control#play').on('click', () => {
+    $('.control#pause, .control#play').toggleClass('hidden')
+  })
+  $('.control#pause').on('click', () => rd.pauseVideo())
+  $('.control#play').on('click', () => rd.playVideo())
+  $('.control#volume-off, .control#volume-on').on('click', () => {
+    $('.control#volume-off, .control#volume-on').toggleClass('hidden')
+  })
+  $('.control#volume-off').on('click', () => rd.mute())
+  $('.control#volume-on').on('click', () => rd.unMute())
 }
 
 var onPlayerStateChange = (e) => {
   if (e.data === 1) {
     $('#tv').addClass('active')
-  } else if (e.data === 2) {
-    $('#tv').removeClass('active')
-    tv.loadVideoById(vid)
-    rd.loadVideoById(rad)
-    tv.seekTo(vid.startSeconds)
   }
 }
 
@@ -117,6 +126,6 @@ var vidRescale = () => {
   tv.setSize(newW, newH)
 }
 
-$(window).on('load resize', () => {
+$(window).on('resize', () => {
   vidRescale()
 })

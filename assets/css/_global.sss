@@ -4,13 +4,14 @@
 
 html,
 body,
-main
+main,
+#intro
   height: 100%
   width: 100%
 
 html
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
-  
+
 body
   background: #000
   margin-top: 0
@@ -36,28 +37,32 @@ a
     background: rgba(0, 0, 0, 0.32)
 
   & h1
+    margin: 0.5em 1em
     position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
+    width: 200px
+    bottom: 0
+    left: 0
     color: #fff
     font-family: 'Press Start 2P', cursive
-    font-size: 4.5em
-    line-height: 75px
-    text-align: center
+    font-size: 3em
+    line-height: 65px
+    text-align: left
 
     @media screen and (--l)
       font-size: 3.5em
       line-height: 55px
+      margin: 0.5em
 
     @media screen and (--m)
       font-size: 3em
       line-height: 45px
+      margin: 0.5em
 
     @media screen and (--s)
+      top: 0
       font-size: 2.1em
       line-height: 40px
-      text-align: left
+      margin: 0 5px
 
     @media screen and (--xs)
       font-size: 2em
@@ -66,24 +71,34 @@ a
     color: #fff
     position: absolute
     right: 20px
-    top: 50px
+    width: 70px
+    height: 70px
+    display: block
+    background-size: contain
+    cursor: pointer
 
-    &::before
+    &.hidden
+      display: none
 
     &#pause
+      background-image: url('../img/iconset/pause-with-circular-button.svg')
+      top: 20px
 
     &#play
-      opacity: 0
-
-    &#volume-off,
-    &#volume-up
-      right: 57px
+      background-image: url('../img/iconset/play-with-circular-button-with-right-arrow-of-bold-rounded-filled-triangle.svg')
+      top: 20px
 
     &#volume-off
-      right: 80px
+      background-image: url('../img/iconset/sound-off-with-circular-button.svg')
+      top: 110px
 
-    &#volume-up
-      opacity: 0
+    &#volume-on
+      background-image: url('../img/iconset/music-circular-button.svg')
+      top: 110px
+
+    &#see-more
+      background-image: url('../img/iconset/down-arrow-in-a-circle-1.svg')
+      top: 200px
 
 .tv
   position: absolute
@@ -112,3 +127,6 @@ a
   position: absolute
   width: 0
   height: 0
+
+#presentation
+  color: #fff
