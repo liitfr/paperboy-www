@@ -1,0 +1,122 @@
+@import 'normalize.css'
+@import 'caesura'
+@import url('https://fonts.googleapis.com/css?family=Bowlby+One+SC|Faster+One|Press+Start+2P')
+
+@font-face
+  font-family: 'FontAwesome'
+  src: url('../fonts/fontawesome-webfont.eot?v=4.7.0')
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg')
+  font-weight: normal
+  font-style: normal
+
+html,
+body,
+main
+  height: 100%
+  width: 100%
+
+body
+  background: #000
+  margin-top: 0
+
+a
+  color: #ff0
+
+.cover
+  position: absolute
+  top: 0
+  left: 0
+  z-index: 2
+  width: 100%
+  height: 100%
+  background: rgba(0, 0, 0, 0.55)
+
+  @media screen and (--l)
+    background: rgba(0, 0, 0, 0.4)
+
+  @media screen and (--s)
+    background: rgba(0, 0, 0, 0.32)
+
+  & h1
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    color: #fff
+    font-family: 'Press Start 2P', cursive
+    font-size: 4.5em
+    line-height: 75px
+    text-align: center
+
+    @media screen and (--l)
+      font-size: 3.5em
+      line-height: 55px
+
+    @media screen and (--m)
+      font-size: 3em
+      line-height: 45px
+
+    @media screen and (--s)
+      font-size: 2.1em
+      line-height: 40px
+      text-align: left
+
+    @media screen and (--xs)
+      font-size: 2em
+
+  & .control
+    color: #fff
+    position: absolute
+    right: 20px
+    top: 50px
+
+    &::before
+      font-size: 2em
+      font-family: 'FontAwesome'
+
+    &#pause
+      font-awesome: pause
+
+    &#play
+      font-awesome: play
+      opacity: 0
+
+    &#volume-off,
+    &#volume-up
+      right: 57px
+
+    &#volume-off
+      font-awesome: volume-off
+      right: 80px
+
+    &#volume-up
+      font-awesome: volume-up
+      opacity: 0
+
+.tv
+  position: absolute
+  top: 0
+  left: 0
+  z-index: 1
+  width: 100%
+  height: 100%
+  overflow: hidden
+
+  & .screen
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    z-index: 1
+    margin: auto
+    opacity: 0
+    transition: opacity 0.5s
+
+    &.active
+      opacity: 1
+
+#rd
+  position: absolute
+  width: 0
+  height: 0

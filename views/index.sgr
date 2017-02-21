@@ -1,0 +1,11 @@
+extends(src='layout.sgr')
+  block(name='content')
+    .cover
+      .control#pause
+      .control#play
+      .control#volume-off
+      .control#volume-up
+      h1 2CL - Club des coursiers Lyonnais
+    .tv
+      .screen.mute#tv
+    #rd
