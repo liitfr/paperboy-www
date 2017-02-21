@@ -1,0 +1,25 @@
+/* TEAM */
+Designer: Mathias Hoffmann
+Site:     liit.fr
+Twitter:  @liitfr
+Contact:  mathias [at] liit [dot] fr
+Location: Lyon, France
+
+/* THANKS */
+Name: 2CL - Club des coursiers Lyonnais
+
+/* SITE */
+Last update:  2017/02/21
+Standards: HTML5, CSS3, ES6
+Components: Node.js, Spike, HTML5Boilerplate, Modernizr, jQuery, Webpack, Babel, Reshape, PostCSS, Netlify, Youtube, FastClick, ...
+Software: Atom, GitKraken, Inkscape, Chrome, Filezilla, RealFaviconGenerator
+
+                ___       ___          ___
+               /  /\     /  /\        /  /\
+ ___     ___  /  /:/    /  /:/       /  /:/
+/__/\   /  /\/__/::\   /__/::\      /  /:/
+\  \:\ /  /:/\__\/\:\__\__\/\:\__  /  /::\
+ \  \:\  /:/    \  \:\/\  \  \:\/\/__/:/\:\
+  \  \:\/:/      \__\::/   \__\::/\__\/  \:\
+   \  \::/       /__/:/    /__/:/      \  \:\
+    \__\/        \__\/     \__\/        \__\/

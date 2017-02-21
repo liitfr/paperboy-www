@@ -4,10 +4,12 @@ const htmlStandards = require('reshape-standard')
 const cssStandards = require('spike-css-standards')
 const jsStandards = require('babel-preset-latest')
 const pageId = require('spike-page-id')
-const fontAwesome = require('postcss-font-awesome')
+const lost = require('lost')
 
 module.exports = {
   devtool: 'source-map',
+  vendor: 'assets/vendor/**',
+  dumpDirs: ['views', 'assets', 'www'],
   matchers: {
     html: '*(**/)*.sgr',
     css: '*(**/)*.sss'
@@ -16,12 +18,17 @@ module.exports = {
   reshape: (ctx) => {
     return htmlStandards({
       webpack: ctx,
-      locals: { pageId: pageId(ctx), foo: 'bar' }
+      locals: { pageId: pageId(ctx) }
     })
   },
   postcss: (ctx) => {
-    const css = cssStandards({ webpack: ctx })
-    css.plugins.push(fontAwesome({replacement: true}))
+    const css = cssStandards({
+      rucksack: {
+        fallbacks: true
+      },
+      webpack: ctx
+    })
+    css.plugins.push(lost())
     return css
   },
   babel: { presets: [jsStandards] },

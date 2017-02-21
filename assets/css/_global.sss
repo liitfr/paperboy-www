@@ -1,13 +1,6 @@
 @import 'normalize.css'
 @import 'caesura'
-@import url('https://fonts.googleapis.com/css?family=Bowlby+One+SC|Faster+One|Press+Start+2P')
-
-@font-face
-  font-family: 'FontAwesome'
-  src: url('../fonts/fontawesome-webfont.eot?v=4.7.0')
-  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg')
-  font-weight: normal
-  font-style: normal
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P')
 
 html,
 body,
@@ -15,9 +8,14 @@ main
   height: 100%
   width: 100%
 
+html
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  
 body
   background: #000
   margin-top: 0
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
 
 a
   color: #ff0
@@ -71,14 +69,10 @@ a
     top: 50px
 
     &::before
-      font-size: 2em
-      font-family: 'FontAwesome'
 
     &#pause
-      font-awesome: pause
 
     &#play
-      font-awesome: play
       opacity: 0
 
     &#volume-off,
@@ -86,11 +80,9 @@ a
       right: 57px
 
     &#volume-off
-      font-awesome: volume-off
       right: 80px
 
     &#volume-up
-      font-awesome: volume-up
       opacity: 0
 
 .tv

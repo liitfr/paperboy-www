@@ -1,7 +1,33 @@
 /* globals YT */
 
-const $ = require('jquery')
+const FastClick = require('fastclick')
+$(function () {
+  FastClick.attach(document.body)
+})
 
+// -----------------------------------------------------------------------------
+// Avoid `console` errors in browsers that lack a console.
+var method
+var noop = () => {}
+var methods = [
+  'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
+  'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
+  'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
+  'timeline', 'timelineEnd', 'timeStamp', 'trace', 'warn'
+]
+var length = methods.length
+var console = (window.console = window.console || {})
+
+while (length--) {
+  method = methods[length]
+  // Only stub undefined methods.
+  if (!console[method]) {
+    console[method] = noop
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Video & music
 // This code comes from : https://codepen.io/ccrch/pen/GgPLVW
 var tag = document.createElement('script')
 tag.src = 'https://www.youtube.com/player_api'
@@ -22,17 +48,16 @@ var playerDefaults = {
   iv_load_policy: 3
 }
 
+// Background video
 var vid = {
   'videoId': '4P6kAeQ_m1Q',
   'startSeconds': 0,
-  // 'endSeconds': 690,
   'suggestedQuality': 'hd720'
 }
+// Radio (music) video
 var rad = {
   'videoId': 'OS90-v5bj7M',
-  'startSeconds': 0,
-  // 'endSeconds': 690,
-  // 'suggestedQuality': 'small'
+  'startSeconds': 0
 }
 
 // Hack to use onYouTubePlayerAPIReady with webpack : http://stackoverflow.com/questions/12256382/youtube-iframe-api-not-triggering-onyoutubeiframeapiready
@@ -72,22 +97,22 @@ var vidRescale = () => {
     // Add black frame
     newW = w + 340
     newH = newW * 721 / 1167
-    $('.tv .screen').css({'left': - (newW - w) / 2 + 'px'})
-    $('.tv .screen').css({'top': - (newH - h) / 2 + 'px'})
+    $('.tv .screen').css({'left': -(newW - w) / 2 + 'px'})
+    $('.tv .screen').css({'top': -(newH - h) / 2 + 'px'})
   } else {
     // H wins
     newH = h
     newW = newH * 1167 / 721
     if (w < 448) {
       // Try to center biker a little bit
-      $('.tv .screen').css({'left': - ((1.5 * newW) - w) / 2 + 'px'})
+      $('.tv .screen').css({'left': -((1.5 * newW) - w) / 2 + 'px'})
     } else if (w < 800) {
       // Try to center biker a little bit
-      $('.tv .screen').css({'left': - ((1.3 * newW) - w) / 2 + 'px'})
+      $('.tv .screen').css({'left': -((1.3 * newW) - w) / 2 + 'px'})
     } else {
-      $('.tv .screen').css({'left': - (newW - w) / 2 + 'px'})
+      $('.tv .screen').css({'left': -(newW - w) / 2 + 'px'})
     }
-    $('.tv .screen').css({'top': - (newH - h) / 2 + 'px'})
+    $('.tv .screen').css({'top': -(newH - h) / 2 + 'px'})
   }
   tv.setSize(newW, newH)
 }
