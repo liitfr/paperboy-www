@@ -56,8 +56,7 @@ var vid = {
 }
 // Radio (music) video
 var rad = {
-  // 'videoId': 'OS90-v5bj7M',
-  'videoId': '493R05ifNsI',
+  'videoId': 'CfMMlT8Lyns',
   'startSeconds': 0
 }
 

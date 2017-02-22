@@ -1,3 +1,6 @@
+// TODO : audio doesn't work on mobile. But then works when pause & resume video. FIND A HACK
+// TODO : FIND A HACK to hide player button once video has been played
+
 const path = require('path')
 const HardSourcePlugin = require('hard-source-webpack-plugin')
 const htmlStandards = require('reshape-standard')
