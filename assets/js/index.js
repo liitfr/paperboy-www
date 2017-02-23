@@ -66,7 +66,8 @@ var vid = {
 }
 // Radio (music) video
 var rad = {
-  'videoId': 'CfMMlT8Lyns',
+  'videoId': 'CT8t_1JXWn8',
+  // 'videoId': 'CfMMlT8Lyns',
   'startSeconds': 4
 }
 
