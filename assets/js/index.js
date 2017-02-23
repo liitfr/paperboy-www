@@ -1,12 +1,21 @@
 /* globals YT */
 
+const ScrollMagic = require('ScrollMagic')
+require('animation.gsap')
+const TimelineMax = require('TimelineMax')
+require('ScrollToPlugin')
+
 const FastClick = require('fastclick')
 $(function () {
   FastClick.attach(document.body)
 })
 
+var smController = new ScrollMagic.Controller()
+var smScene
+
 // -----------------------------------------------------------------------------
 // Avoid `console` errors in browsers that lack a console.
+
 var method
 var noop = () => {}
 var methods = [
@@ -29,6 +38,7 @@ while (length--) {
 // -----------------------------------------------------------------------------
 // Video & music
 // This code comes from : https://codepen.io/ccrch/pen/GgPLVW
+
 var tag = document.createElement('script')
 tag.src = 'https://www.youtube.com/player_api'
 var firstScriptTag = document.getElementsByTagName('script')[0]
@@ -57,12 +67,12 @@ var vid = {
 // Radio (music) video
 var rad = {
   'videoId': 'CfMMlT8Lyns',
-  'startSeconds': 0
+  'startSeconds': 4
 }
 
 // Hack to use onYouTubePlayerAPIReady with webpack : http://stackoverflow.com/questions/12256382/youtube-iframe-api-not-triggering-onyoutubeiframeapiready
 window.onYouTubePlayerAPIReady = () => {
-  rd = new YT.Player('rd', {events: {'onReady': onRadReady, 'onStateChange': onPlayerStateChange}, playerVars: playerDefaults})
+  rd = new YT.Player('rd', {events: {'onReady': onRadReady}, playerVars: playerDefaults})
 }
 
 var onTVReady = () => {
@@ -74,6 +84,11 @@ var onTVReady = () => {
 }
 
 var onRadReady = () => {
+  smScene = new ScrollMagic.Scene({triggerElement: "#trigger-volume", duration: 700})
+    .addTo(smController)
+    .on("progress", function (e) {
+  	   rd.setVolume((1 - e.progress.toFixed(3)) * 100)
+  	})
   tv = new YT.Player('tv', {events: {'onReady': onTVReady, 'onStateChange': onPlayerStateChange}, playerVars: playerDefaults})
   rd.loadVideoById(rad)
   $('.control#pause, .control#play').on('click', () => {
@@ -81,6 +96,11 @@ var onRadReady = () => {
   })
   $('.control#pause').on('click', () => rd.pauseVideo())
   $('.control#play').on('click', () => rd.playVideo())
+  $('.control#replay').on('click', () => {
+    tv.seekTo(0)
+    rd.seekTo(0)
+    $('.control#pause, .control#replay').toggleClass('hidden')
+  })
   $('.control#volume-off, .control#volume-on').on('click', () => {
     $('.control#volume-off, .control#volume-on').toggleClass('hidden')
   })
@@ -89,8 +109,16 @@ var onRadReady = () => {
 }
 
 var onPlayerStateChange = (e) => {
+  // -1: unstarted
+  // 0: ended
+  // 1: playing
+  // 2: paused
+  // 3: buffering
+  // 4: video cued
   if (e.data === 1) {
     $('#tv').addClass('active')
+  } else if (e.data === 0) {
+    $('.control#pause, .control#replay').toggleClass('hidden')
   }
 }
 
@@ -128,3 +156,9 @@ var vidRescale = () => {
 $(window).on('resize', () => {
   vidRescale()
 })
+
+// -----------------------------------------------------------------------------
+// Tweens
+
+TweenMax.to('#title-hyphen', 0.5, {ease: Expo.easeInOut, autoAlpha: 0, yoyo: true, repeat: -1})
+$('.control#see-more').on('click', () => TweenLite.to(window, 1.5, {ease: Power4.easeOut, scrollTo: '#presentation'}))

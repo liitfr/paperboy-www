@@ -1,6 +1,7 @@
 # paperboy-www
 
-:bike: for my friends who earn their life on a bike
+:bike: for my friends who earn their life on a bike.  
+:warning: Work in progress :warning:
 
 ## Setup
 
@@ -27,3 +28,4 @@ Then you can :
 - Run on Firefox, IE & Edge to check potential errors and display differences
 - Run Google's PageSpeed Insights
 - Run Google's Mobile Optimisation Test Tool
+- Run online validity tests for html & css
