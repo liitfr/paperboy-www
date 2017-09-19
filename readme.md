@@ -1,7 +1,11 @@
 # paperboy-www
 
-:bike: for my friends who earn their life on a bike.  
-:warning: Work in progress :warning:
+[![tests](http://img.shields.io/travis/liitfr/paperboy-www/master.svg?style=flat)](https://travis-ci.org/liitfr/paperboy-www)
+[![dependencies](http://img.shields.io/david/liitfr/paperboy-www.svg?style=flat)](https://david-dm.org/liitfr/paperboy-www)
+[![Greenkeeper badge](https://badges.greenkeeper.io/liitfr/paperboy-www.svg)](https://greenkeeper.io/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+:bike: for my friends who earn their life on a bike.
 
 ## Setup
 
@@ -12,20 +16,7 @@
 - run `spike watch` or `spike compile`
 
 ## Testing
+
 Tests are located in `test/**` and are powered by [ava](https://github.com/sindresorhus/ava)
 - `npm install` to ensure devDeps are installed
 - `npm test` to run test suite
-
-Then you can :
-
-- Run following plugins on Chrome :
-  1. Lighthouse
-  2. James - Analytic/SEO Auditor
-  3. Accessibility Developer Tools
-  4. Open Graph Preview
-  5. YSlow
-  6. DevTools Audits
-- Run on Firefox, IE & Edge to check potential errors and display differences
-- Run Google's PageSpeed Insights
-- Run Google's Mobile Optimisation Test Tool
-- Run online validity tests for html & css

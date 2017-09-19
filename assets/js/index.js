@@ -1,39 +1,11 @@
-/* globals YT */
+/* globals $, YT, Expo, TweenLite, Power4 */
 
 const ScrollMagic = require('ScrollMagic')
 require('animation.gsap')
-const TimelineMax = require('TimelineMax')
+const TweenMax = require('TweenMax')
 require('ScrollToPlugin')
 
-const FastClick = require('fastclick')
-$(function () {
-  FastClick.attach(document.body)
-})
-
 var smController = new ScrollMagic.Controller()
-var smScene
-
-// -----------------------------------------------------------------------------
-// Avoid `console` errors in browsers that lack a console.
-
-var method
-var noop = () => {}
-var methods = [
-  'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
-  'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
-  'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
-  'timeline', 'timelineEnd', 'timeStamp', 'trace', 'warn'
-]
-var length = methods.length
-var console = (window.console = window.console || {})
-
-while (length--) {
-  method = methods[length]
-  // Only stub undefined methods.
-  if (!console[method]) {
-    console[method] = noop
-  }
-}
 
 // -----------------------------------------------------------------------------
 // Video & music
@@ -85,11 +57,11 @@ var onTVReady = () => {
 }
 
 var onRadReady = () => {
-  smScene = new ScrollMagic.Scene({triggerElement: "#trigger-volume", duration: 700})
+  new ScrollMagic.Scene({triggerElement: '#trigger-volume', duration: 700})
     .addTo(smController)
-    .on("progress", function (e) {
-  	   rd.setVolume((1 - e.progress.toFixed(3)) * 100)
-  	})
+    .on('progress', function (e) {
+      rd.setVolume((1 - e.progress.toFixed(3)) * 100)
+    })
   tv = new YT.Player('tv', {events: {'onReady': onTVReady, 'onStateChange': onPlayerStateChange}, playerVars: playerDefaults})
   rd.loadVideoById(rad)
   $('.control#pause, .control#play').on('click', () => {
