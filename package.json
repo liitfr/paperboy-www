@@ -10,7 +10,7 @@
   "dependencies": {
     "caesura": "^0.3.0",
     "gsap": "^1.20.2",
-    "normalize.css": "^7.0.0",
+    "normalize.css": "^8.0.0",
     "reshape-standard": "^3.0.0",
     "scrollmagic": "^2.0.5",
     "spike": "^2.0.0",
