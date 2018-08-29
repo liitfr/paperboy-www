@@ -24,7 +24,7 @@
   "devDependencies": {
     "ava": "^0.22.0",
     "rimraf": "^2.6.2",
-    "snazzy": "^7.0.0",
+    "snazzy": "^8.0.0",
     "standard": "^10.0.3"
   },
   "homepage": "https://github.com/liitfr/paperboy-www",
