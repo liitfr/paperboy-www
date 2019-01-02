@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "ava": "^0.22.0",
-    "rimraf": "^2.6.2",
+    "rimraf": "^2.6.3",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3"
   },
